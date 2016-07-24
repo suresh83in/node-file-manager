@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>File Manager</title>
+  <title>FMB DevOps Manager</title>
 
   <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
   <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
@@ -21,29 +21,11 @@
 </head>
 
 <body ng-controller="FileManagerCtr as FM">
-  <div class="modal fade" id="createFolderModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4>New Folder</h4>
-        </div>
-        <div class="modal-body">
-          <p>Complete Path　{{FM.curFolderPath + FM.newFolderName + '/'}}</p>
-          <label>Folder Name <input class="input-xlarge" ng-model="FM.newFolderName" /></label>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.newFolderName" ng-click="FM.createFolder(FM.newFolderName)">OK</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="modal fade" id="uploadFileModal">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4>Upload File - Just for small file now</h4>
+          <h4>Upload Workspace - upload the zip file now</h4>
         </div>
         <div class="modal-body">
           <p>Upload to {{FM.curFolderPath + FM.uploadFile.name}}</p>
@@ -59,44 +41,11 @@
     </div>
   </div>
 
-  <div class="modal fade" id="renameModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4>Rename</h4>
-        </div>
-        <div class="modal-body">
-          <label>New Name <input class="input-xlarge" ng-model="FM.newName" placeholder={{FM.selection[0].name}} /></label>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.newName" ng-click="FM.rename(FM.newName)">OK</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="moveModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4>Move</h4>
-        </div>
-        <div class="modal-body">
-          <label>Target　<input class="input-xlarge" ng-model="FM.moveTarget" placeholder="{{FM.curFolderPath}}" /></label>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="!FM.moveTarget" ng-click="FM.move(FM.moveTarget)">OK</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">File Manager</a>
+        <a class="navbar-brand" href="#">FMB DevOps Manager</a>
       </div>
     </div>
   </nav>
@@ -104,10 +53,6 @@
   <div class="container">
     <div class="btn-toolbar">
       <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('download')" ng-click="FM.download()"><span class="glyphicon glyphicon-download"></span> Download</button>
-      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('delete')" ng-click="FM.delete()"><span class="glyphicon glyphicon-remove"></span> Delete</button>
-      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('move')" data-toggle="modal" data-target="#moveModal"><span class="glyphicon glyphicon-random"></span> Move</button>
-      <button type="button" class="btn btn-default" ng-disabled="FM.btnDisabled('rename')" data-toggle="modal" data-target="#renameModal"><span class="glyphicon glyphicon-font"></span> Rename</button>
-      <button type="button" class="btn btn-default pull-right" ng-disabled="FM.btnDisabled('create_folder')" data-toggle="modal" data-target="#createFolderModal"><span class="glyphicon glyphicon-plus-sign"></span> New Folder</button>
       <button type="button" class="btn btn-default pull-right" ng-disabled="FM.btnDisabled('upload_file')" data-toggle="modal" data-target="#uploadFileModal"><span class="glyphicon glyphicon-upload"></span> Upload</button>
     </div>
 
