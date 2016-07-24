@@ -1,10 +1,11 @@
 
 
-# Usag
+# Usage
 
 ```sh
   git clone https://github.com/suresh83in/node-file-manager.git
   cd node-file-manager
+  npm install
   cd lib
   node --harmony index.js -p 8080 -d /path/to
 ```
